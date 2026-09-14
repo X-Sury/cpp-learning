@@ -18,8 +18,5 @@
     <ClCompile Include="student_v1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="student_v2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

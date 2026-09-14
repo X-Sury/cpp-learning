@@ -2,40 +2,47 @@
 #include<string>
 #include<iomanip>
 using namespace std;
-double meanScore(int num,double score[]) {
+class Student {
+public:
+	string name;
+	double score;
+};
+
+double meanScore(int num, Student students[]) {
 	double total = 0;
 	for (int i = 0; i < num; i++) {
-		total += score[i]; 
+		total += students[i].score;
 	}
 	double average = total / num;
 	return average;
 }
-double maxScore(int num,double score[])
-{ double highest = score[0];
-for (int i = 1; i < num; i++) {
-	if (score[i] > highest) {
-		highest = score[i];
+double maxScore(int num, Student students[])
+{
+	double highest = students[0].score;
+	for (int i = 1; i < num; i++) {
+		if (students[i].score > highest) {
+			highest = students[i].score;
+		}
 	}
-}
-return highest; 
+	return highest;
 }
 int main() {
 	int num;
 	cin >> num;
-	string *name = new string [num];
-	double* score = new double [num];
+	Student* students = new Student[num];
 	for (int i = 0; i < num; i++) {
-		cout << "name   score";
-		cin >> name[i] >>score[i];
+		cout << "name:";
+		cin >> students[i].name;
+		cout << "score:";
+		cin >> students[i].score;
+
 	}
-	double average = meanScore(num, score);
-	double highest = maxScore(num, score);
 	for (int i = 0; i < num; i++) {
-		cout << name[i] << " "<<fixed << setprecision(2) << score[i] << endl;
+		cout << "name:" << students[i].name << " " << "score:" << fixed << setprecision(2) << students[i].score << endl;
 	}
-	cout << "average score:" << average << endl;
-	cout << "highest score:" << highest << endl;
-	delete[]name;
-	delete[]score;
-	return 0; 
+	double average = meanScore(num, students);
+	double highest = maxScore(num, students);
+	cout << "average:" << average << " " << "highest:" << highest << endl;
+	delete[]students;
+	return 0;
 }
